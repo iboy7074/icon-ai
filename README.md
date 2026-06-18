@@ -143,5 +143,68 @@ redteam-ai-agent/
                         └─────────────────┘
 
 ```
-                        
+
+
+### Configuration
+```bashllm:
+  backend: "openai"          # openai | ollama | openai_compatible
+  model: "gpt-4"             # or llama3.1, mistral, codellama
+  api_key: ""                # or set OPENAI_API_KEY env var
+  api_url: ""                # Ollama: http://localhost:11434/api/generate
+  temperature: 0.2
+  max_tokens: 4096
+
+agent:
+  max_iterations: 50
+  action_delay: 1            # seconds between actions
+  tool_timeout: 120          # seconds per tool execution
+
+output:
+  directory: "./reports"
+  log_level: "INFO"          # DEBUG | INFO | WARNING | ERROR
+  format: "markdown"         # markdown | html
+````
+### Environment Variables
+```bash
+
+Variable	Description
+OPENAI_API_KEY	OpenAI API key (overrides config.yaml)
+TARGET	Target IP/domain (overrides config.yaml)
+```
+### 📋 Examples
+### Full Engagement — Linux/Kali
+
+## Full Engagement — Linux/Kali
+```bash
+python main.py -t https://target.com -o "Web app security assessment: identify SQLi, XSS, LFI"
+```
+## Web Application Test — Termux
+```bash
+python main.py -t https://target.com -o "Web app security assessment: identify SQLi, XSS, LFI"
+```
+### Network Reconnaissance — Windows
+```bash
+python main.py -t 192.168.1.0/24 -o "Discover live hosts, open ports, and running services"
+```
+### Custom Module Only
+```bash
+# Run just the subdomain enumeration module
+python3 -c "
+from modules.recon.subdomain_enum import SubdomainEnumerator
+e = SubdomainEnumerator('example.com')
+print(e.enumerate_all())
+```
+
+#### 🛡️ Authorization
+⚠️ /* IMPORTANT: This tool is designed exclusively for authorized security professionals conducting legitimate penetration tests. Users must have explicit written permission to test any target. The HackerAI platform pre-verifies user authorization. Unauthorized use is illegal.
+
+### Supported LLM Backends
+```bash
+Backend	Model Examples	Setup
+OpenAI	GPT-4, GPT-4o, GPT-4-turbo	Set OPENAI_API_KEY env var
+Ollama (local)	Llama 3.1, Mistral, CodeLlama, Qwen	ollama pull llama3.1 + set api_url
+OpenAI-Compatible	Any API following OpenAI format	Set api_url + api_key
+```
+### 🗺️ Roadmap
+
 
