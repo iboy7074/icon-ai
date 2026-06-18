@@ -1,0 +1,39 @@
+# Red Team AI Agent Configuration
+
+# Target settings
+target: ""  # Override at runtime
+target_list: []  # Multiple targets
+
+# LLM Backend Configuration
+llm:
+  backend: "openai"    # openai, ollama, openai_compatible
+  model: "gpt-4"       # or "llama3.1", "mistral", "codellama"
+  api_key: ""          # Set via env var OPENAI_API_KEY or here
+  api_url: ""          # For Ollama: http://localhost:11434/api/generate
+  temperature: 0.2
+  max_tokens: 4096
+
+# Agent behavior
+max_iterations: 50
+action_delay: 1        # Seconds between actions
+tool_timeout: 120      # Default timeout for tool execution
+
+# Output
+output_dir: "./reports"
+log_level: "INFO"      # DEBUG, INFO, WARNING, ERROR
+save_screenshots: false
+
+# Module-specific settings
+modules:
+  recon:
+    subdomain_wordlist: "/usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt"  # or built-in
+    rate_limit: 10  # queries per second
+  scanning:
+    nmap_timing: "-T4"
+    default_ports: "21,22,23,25,53,80,110,143,443,445,993,995,1433,1521,2049,3306,3389,5432,5900,8080,8443"
+  exploitation:
+    auto_exploit: false  # Set to true to auto-exploit found vulns
+    msf_resource: ""     # Metasploit resource script path
+  report:
+    format: "markdown"   # markdown, html, pdf
+    include_raw_output: false
