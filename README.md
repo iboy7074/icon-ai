@@ -1,5 +1,4 @@
 # icon-ai
-##Red Team AI Agent — Cross-Platform (Linux, Windows, Termux)
 <div align="center">
   <h1>🤖 Red Team AI Agent</h1>
   <p><strong>Autonomous Penetration Testing Framework</strong></p>
@@ -102,7 +101,7 @@ python3 main.py --list-tools
 python3 main.py --platform-info
 ```
 ### Architecture
-```
+bash```
 redteam-ai-agent/
 │
 ├── main.py                      # Entry point — CLI argument parsing & orchestration
@@ -130,7 +129,9 @@ redteam-ai-agent/
     └── logger.py                # Structured logging
     ```
     
+    
   ### How It Works
+  bash```
     ┌─────────────┐     ┌──────────────────┐     ┌───────────────┐
 │  User sets   │────▶│  Agent ReAct     │────▶│  Tool Registry│
 │  Objective   │     │  Loop (LLM)      │     │  (Execution)  │
@@ -140,5 +141,6 @@ redteam-ai-agent/
         └───────────────│  Results &      │◀──────────┘
                         │  Observations   │
                         └─────────────────┘
+                        ```
                         
 
