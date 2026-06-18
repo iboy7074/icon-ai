@@ -126,8 +126,7 @@ redteam-ai-agent/
 └── utils/
     ├── platform.py              # Cross-platform detection (Linux/Win/Termux)
     ├── executor.py              # Safe command execution
-    └── logger.py                # Structured logging
-    ```
+    └── logger.py                # Structured logging ```
     
     
   ### How It Works
@@ -140,7 +139,6 @@ redteam-ai-agent/
         │               ┌─────────────────┐           │
         └───────────────│  Results &      │◀──────────┘
                         │  Observations   │
-                        └─────────────────┘
-                        ```
+                        └─────────────────┘```
                         
 
