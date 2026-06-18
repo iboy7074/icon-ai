@@ -101,7 +101,7 @@ python3 main.py --list-tools
 python3 main.py --platform-info
 ```
 ### Architecture
-bash```
+```bash
 redteam-ai-agent/
 │
 ├── main.py                      # Entry point — CLI argument parsing & orchestration
@@ -130,7 +130,7 @@ redteam-ai-agent/
     
     
   ### How It Works
-bash```
+```bash
     ┌─────────────┐     ┌──────────────────┐     ┌───────────────┐
 │  User sets   │────▶│  Agent ReAct     │────▶│  Tool Registry│
 │  Objective   │     │  Loop (LLM)      │     │  (Execution)  │
