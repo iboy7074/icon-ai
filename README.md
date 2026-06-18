@@ -102,6 +102,7 @@ python3 main.py --list-tools
 python3 main.py --platform-info
 ```
 ### Architecture
+```
 redteam-ai-agent/
 │
 ├── main.py                      # Entry point — CLI argument parsing & orchestration
@@ -127,6 +128,7 @@ redteam-ai-agent/
     ├── platform.py              # Cross-platform detection (Linux/Win/Termux)
     ├── executor.py              # Safe command execution
     └── logger.py                # Structured logging
+    ```
     
   ### How It Works
     ┌─────────────┐     ┌──────────────────┐     ┌───────────────┐
