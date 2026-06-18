@@ -130,7 +130,7 @@ redteam-ai-agent/
     
     
   ### How It Works
-  bash```
+bash```
     ┌─────────────┐     ┌──────────────────┐     ┌───────────────┐
 │  User sets   │────▶│  Agent ReAct     │────▶│  Tool Registry│
 │  Objective   │     │  Loop (LLM)      │     │  (Execution)  │
@@ -139,6 +139,7 @@ redteam-ai-agent/
         │               ┌─────────────────┐           │
         └───────────────│  Results &      │◀──────────┘
                         │  Observations   │
-                        └─────────────────┘```
+                        └─────────────────┘
+                        ```
                         
 
