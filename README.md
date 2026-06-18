@@ -54,10 +54,89 @@ It uses a **ReAct (Reasoning + Acting)** loop powered by your choice of LLM back
 
 ### Installation
 
+
+###Termux (Android)
+```bash
+pkg install git python -y
+git clone https://github.com/your-org/redteam-ai-agent.git
+cd redteam-ai-agent
+bash install.sh
+```
 #### Linux (Kali/Ubuntu/Debian/Arch)
+
 
 ```bash
 git clone https://github.com/your-org/redteam-ai-agent.git
 cd redteam-ai-agent
 chmod +x install.sh
 ./install.sh
+```
+
+### Windows (PowerShell)
+```bash
+git clone https://github.com/your-org/redteam-ai-agent.git
+cd redteam-ai-agent
+.\install.ps1
+```
+### Configure
+
+```bash
+# Copy and edit the config
+cp config.yaml config.yaml
+
+# Set your API key (or use env var)
+export OPENAI_API_KEY="sk-..."
+```
+### run
+```bash
+# Basic usage
+python3 main.py -t 10.10.10.1 -o "Enumerate all ports, services, and find vulnerabilities"
+
+# Verbose mode
+python3 main.py -t example.com -o "Subdomain enumeration + web recon" --verbose
+
+# List available tools on your system
+python3 main.py --list-tools
+
+# Show platform info
+python3 main.py --platform-info
+```
+### Architecture
+redteam-ai-agent/
+│
+├── main.py                      # Entry point — CLI argument parsing & orchestration
+├── config.yaml                  # Global configuration
+├── install.sh                   # Linux/Termux installer
+├── install.ps1                  # Windows installer
+├── requirements.txt             # Python dependencies
+│
+├── core/
+│   ├── agent.py                 # ReAct agent loop (Observe → Think → Act → Repeat)
+│   ├── llm_interface.py         # LLM abstraction (OpenAI, Ollama, OpenAI-compatible)
+│   └── tool_registry.py         # Dynamic tool discovery & execution
+│
+├── modules/
+│   ├── recon/                   # Reconnaissance modules
+│   │   └── subdomain_enum.py    # DNS brute-force + crt.sh enumeration
+│   ├── scanning/                # Network & web scanning
+│   ├── exploitation/            # Exploit generation & execution
+│   ├── post_exploit/            # Post-exploitation & pivoting
+│   └── report/                  # Report generation
+│
+└── utils/
+    ├── platform.py              # Cross-platform detection (Linux/Win/Termux)
+    ├── executor.py              # Safe command execution
+    └── logger.py                # Structured logging
+    
+  ### How It Works
+    ┌─────────────┐     ┌──────────────────┐     ┌───────────────┐
+│  User sets   │────▶│  Agent ReAct     │────▶│  Tool Registry│
+│  Objective   │     │  Loop (LLM)      │     │  (Execution)  │
+└─────────────┘     └──────────────────┘     └───────┬───────┘
+        ▲                                             │
+        │               ┌─────────────────┐           │
+        └───────────────│  Results &      │◀──────────┘
+                        │  Observations   │
+                        └─────────────────┘
+                        
+
